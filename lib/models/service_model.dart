@@ -1,33 +1,69 @@
+class UserFields {
+  static final List<String> values = [id, name, username, email, phno];
+
+  static final String id = '_id';
+  static final String name = 'name';
+  static final String username = 'username';
+  static final String email = 'email';
+  static final String phno = 'phone';
+}
+
 class Service {
   Service({
     this.id,
     this.name,
     this.username,
     this.email,
-    this.address,
+    // this.address,
     this.phone,
-    this.website,
-    this.company,
+    // this.website,
+    // this.company,
   });
 
   int id;
   String name;
   String username;
   String email;
-  Address address;
+  // Address address;
   String phone;
-  String website;
-  Company company;
+  // String website;
+  // Company company;
 
   factory Service.fromJson(Map<String, dynamic> json) => Service(
         id: json["id"],
         name: json["name"],
         username: json["username"],
         email: json["email"],
-        address: Address.fromJson(json["address"]),
+        // address: Address.fromJson(json["address"]),
         phone: json["phone"],
-        website: json["website"],
-        company: Company.fromJson(json["company"]),
+        // website: json["website"],
+        // company: Company.fromJson(json["company"]),
+      );
+
+  Map<String, dynamic> toJson() => {
+        UserFields.id: id,
+        UserFields.name: name,
+        UserFields.username: username,
+        UserFields.email: email,
+        UserFields.phno: phone,
+      };
+  Service copy({
+    int id,
+     String name,
+  String username,
+  String email,
+  
+  String phone,
+
+    
+  }) =>
+      Service(id: id?? this.id,
+      
+      name: name?? this.name,
+      username: username?? this.username,
+      email: email??this.email,
+      phone: phone?? this.phone,
+      
       );
 }
 
