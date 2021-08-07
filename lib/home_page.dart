@@ -37,8 +37,14 @@ class _HomePageState extends State<HomePage> {
   }
 
   @override
+  void dispose() {
+    ServiceDatabase.instance.close();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return users.length > 0 ?  fromDatabase():fromApi();
+    return users.length > 0 ? fromDatabase() : fromApi();
   }
 
   Scaffold fromApi() {
